@@ -1,0 +1,2 @@
+# Hangman
+Solutions to handman
