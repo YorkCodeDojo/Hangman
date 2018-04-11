@@ -17,7 +17,7 @@ namespace HangmanTest.Services
                 client.BaseAddress = new Uri("https://od-api.oxforddictionaries.com");
 
                 client.DefaultRequestHeaders.Add("app_id", "c7cd133f");
-                client.DefaultRequestHeaders.Add("app_key", "571efd29bbe7ba7a0640ef0c4873170e");
+                client.DefaultRequestHeaders.Add("app_key", "CHANGE_ME");
 
                 var response = await client.GetAsync($"/api/v1/entries/en/{word}");
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)

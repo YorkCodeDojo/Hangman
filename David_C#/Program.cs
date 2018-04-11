@@ -24,9 +24,8 @@ namespace HangmanTest
                 var makeMoveAction = new PlayMoveOnServerAction(hangmanServer);
                 var newGameAction = new StartNewGameOnServerAction(hangmanServer);
 
-                //var registerUserAction = new RegisterUserOnServerAction(hangmanServer);
-                //var x_access_token = await registerUserAction.Execute(username: "MrDavidBetteridge", password: "NotTelling");
-                var x_access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhY2U1NjliNWU3OTM4MDAxNDBhMjYyNCIsImlhdCI6MTUyMzQ3MjAyNywiZXhwIjoxNTIzNTU4NDI3fQ.UuEm6IZFrlGfYxixKzddus-STgV_9NTSKO12pU8xCvU";
+                var registerUserAction = new RegisterUserOnServerAction(hangmanServer);
+                var x_access_token = await registerUserAction.Execute(username: "CHANGEME", password: "CHANGEME");
                 Login(hangmanServer, x_access_token);
 
                 while (true)
