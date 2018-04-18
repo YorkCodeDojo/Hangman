@@ -40,5 +40,13 @@ namespace HangmanTest.WordList
                         .First()
                         .Key;
         }
+
+        internal IEnumerable<Word> RemoveWordsNotMatchingMask(IEnumerable<Word> words, string mask, char letter)
+        {
+            return words.Where(w => MatchesMask(w.word, mask, letter));
+        }
+
+        private bool MatchesMask(string word, string mask, char letter)
+              => Enumerable.Range(0, word.Length - 1).All(i => ((mask[i] == letter && word[i] == letter) || (mask[i] != letter && word[i] != letter)));
     }
 }

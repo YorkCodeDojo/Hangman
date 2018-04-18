@@ -70,22 +70,16 @@ namespace HangmanTest
                 }
                 else
                 {
-                    Console.WriteLine($" - Correct -  {ConvertToWord(game.progress)}");
-
-                    for (int i = 0; i < game.progress.Length; i++)
-                    {
-                        if (!string.IsNullOrWhiteSpace(game.progress[i]) && game.progress[i][0] == suggestion)
-                        {
-                            words = filter.RemoveWordsWithOutALetterInKnownPosition(words, i, suggestion);
-                        }
-                    }
+                    var progress = ConvertToWord(game.progress);
+                    Console.WriteLine($" - Correct -  {progress}");
+                    words = filter.RemoveWordsNotMatchingMask(words, progress, suggestion);
                 }
             }
 
             if (DidWeWin(game))
             {
                 var finalWord = ConvertToWord(game.progress);
-                Console.WriteLine($"Well done - we won in {game.misses + game.progress.Count()} guesses.  The word was {finalWord}");
+                Console.WriteLine($"Well done - we won in {game.misses + game.progress.Distinct().Count()} guesses.  The word was {finalWord}");
 
                 var definitionQuery = new DefinitionFromOxfordDictionaryQuery();
                 var meaning = await definitionQuery.Evaluate(finalWord);
